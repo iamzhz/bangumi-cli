@@ -7,7 +7,7 @@ def call_other(verb, args):
     if verb == "help":
         func.help_info.help_info()
     elif verb == "cal":
-        func.calendar.calendar()
+        func.calendar.calendar(args)
     elif verb == "user":
         func.user.user(args)
     elif verb == "search":
