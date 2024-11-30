@@ -6,6 +6,8 @@
 """
 def parse_line(line):
     words = line.split()
+    if len(words) == 0:
+        return None, None
     verb = words[0]
     args = words[1:]
     return verb, args
