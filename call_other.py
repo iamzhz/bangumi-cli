@@ -2,6 +2,7 @@ import func.help_info
 import func.calendar
 import func.user
 import func.search
+import func.check
 import os
 def call_other(verb, args):
     if verb == "help":
@@ -12,6 +13,8 @@ def call_other(verb, args):
         func.user.user(args)
     elif verb == "search":
         func.search.search(args)
+    elif verb == "check":
+        func.check.check_access_token(args)
     elif verb == "exit" or verb == "q":
         exit()
     elif verb == "clear":
