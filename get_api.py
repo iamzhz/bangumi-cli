@@ -10,9 +10,12 @@ headers = {
     #'Authorization': f'Bearer {access_token}'
 }
 def get_api(relative_url):
-    response = requests.get(BASE_URL + relative_url, headers=headers)
-    return response.status_code, json.loads(response.text)
-import requests
+    try:
+        response = requests.get(BASE_URL + relative_url, headers=headers)
+        return response.status_code, response.json()
+    except requests.exceptions.RequestException as e:
+        return None, str(e)  # Request Error
+
 
 
 def check_access_token(access_token):
