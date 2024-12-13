@@ -1,15 +1,16 @@
 import requests
 import json
+import account.login
 BASE_URL = "https://api.bgm.tv"
-"""
-# 假设已经获取到的 access_token
-access_token = "your_access_token"
-"""
 headers = {
     'User-Agent': 'iamzhz/ban-terminal (https://github.com/iamzhz/ban-terminal)',
-    #'Authorization': f'Bearer {access_token}'
+    #'Authorization': f'Bearer {account.login.access_token}'
 }
 def get_api(relative_url):
+    # refresh access_token
+    if account.login.access_token is not None:
+        headers['Authorization'] = f'Bearer {account.login.access_token}'
+    # get api
     try:
         response = requests.get(BASE_URL + relative_url, headers=headers)
         return response.status_code, response.json()
