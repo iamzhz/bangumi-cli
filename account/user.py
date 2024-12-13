@@ -3,7 +3,14 @@ from rich.console import Console
 console = Console()
 def get_user_info_by_name(username):
     return get_api.get_api(f"/v0/users/{username}")
+def get_user_info_me():
+    return get_api.get_api("/v0/me")
 
+def output_user_info_by_json(info):
+    console.print(f"[u]Username[/u]: {info['username']}")
+    console.print(f"[u]Nickname[/u]: {info['nickname']}")
+    console.print(f"[u]Id[/u]: {info['id']}")
+    console.print(f"[u]Sign[/u]: {info['sign']}")
 def user_info(args):
     if len(args) == 0:
         print("Please enter the username.")
@@ -16,16 +23,25 @@ def user_info(args):
         print('User not found.')
         return
     # status == 200
-    console.print(f"[u]Username[/u]: {info['username']}")
-    console.print(f"[u]Nickname[/u]: {info['nickname']}")
-    console.print(f"[u]Id[/u]: {info['id']}")
-    console.print(f"[u]Sign[/u]: {info['sign']}")
+    output_user_info_by_json(info)
+def user_info_me():
+    status, info = get_user_info_me()
+    if status == 401:
+        print('Unauthorized.')
+        return False
+    if status == 200:
+        output_user_info_by_json(info)
+        return True
+    return False
+    
 def user(args):
     if len(args) == 0:
         print("Please enter the args.")
         return
     if args[0] == 'info':
         user_info(args[1:])
+    elif args[0] == 'me':
+        return user_info_me()
     elif args[0] == 'avatar':
         # TODO
         pass
