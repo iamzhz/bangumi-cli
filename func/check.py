@@ -1,6 +1,10 @@
 import get_api
 from rich.console import Console
 console = Console()
+"""
+success: return True
+failure: return False
+"""
 def check_access_token(args):
     # check args
     if len(args) < 1:
@@ -10,5 +14,7 @@ def check_access_token(args):
     status_code, content = get_api.check_access_token(args[0])
     if status_code == 200:
         console.print(f'[bold green]Success[/bold green]: {content}')
+        return True
     else:
         console.print(f'[bold red]{status_code}[/bold red]: {content}')
+        return False
