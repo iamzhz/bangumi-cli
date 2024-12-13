@@ -37,9 +37,3 @@ def check_access_token(access_token):
     except requests.exceptions.RequestException as e:
         return None, e  # Request Error
     return None
-def get_calendar():
-    return get_api("/calendar")
-def get_user_info_by_name(username):
-    return get_api(f"/v0/users/{username}")
-def get_search_subjects(keyword, type = 2, responseGroup = "small"):
-    return get_api(f"/search/subject/{keyword}?type={type}&responseGroup={responseGroup}")

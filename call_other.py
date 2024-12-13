@@ -1,8 +1,8 @@
 import func.help_info
 import func.calendar
-import func.user
+import account.user
 import func.search
-import func.check
+import account.check
 import account.login
 import os
 def call_other(verb, args):
@@ -11,11 +11,11 @@ def call_other(verb, args):
     elif verb == "cal":
         func.calendar.calendar(args)
     elif verb == "user":
-        func.user.user(args)
+        account.user.user(args)
     elif verb == "search":
         func.search.search(args)
     elif verb == "check":
-        func.check.check_access_token(args)
+        account.check.check_access_token(args)
     elif verb == "login":
         account.login.login()
     elif verb == "exit" or verb == "q":

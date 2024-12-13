@@ -1,11 +1,14 @@
 import get_api
 from rich.console import Console
 console = Console()
+def get_user_info_by_name(username):
+    return get_api.get_api(f"/v0/users/{username}")
+
 def user_info(args):
     if len(args) == 0:
         print("Please enter the username.")
         return
-    status, info = get_api.get_user_info_by_name(args[0])
+    status, info = get_user_info_by_name(args[0])
     if status == 400:
         print('Username too long.')
         return

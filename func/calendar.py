@@ -2,6 +2,8 @@ import get_api
 from rich.console import Console
 from rich.table import Table
 from datetime import datetime
+def get_calendar():
+    return get_api.get_api("/calendar")
 def calendar(args):
     # deal with args
     if len(args) == 0:
@@ -14,7 +16,7 @@ def calendar(args):
             if i.isdigit():
                 days.append(int(i))
     # get from api
-    _, cal = get_api.get_calendar()
+    _, cal = get_calendar()
     # print calendar
     for i in cal:
         if i['weekday']['id'] not in days:
