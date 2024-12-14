@@ -7,8 +7,11 @@ headers = {
     #'Authorization': f'Bearer {account.login.access_token}'
 }
 def get_api(relative_url):
+    global headers
     # refresh access_token
-    if account.login.access_token is not None:
+    if account.login.access_token is None:
+        del headers['Authorization']
+    else:
         headers['Authorization'] = f'Bearer {account.login.access_token}'
     # get api
     try:
