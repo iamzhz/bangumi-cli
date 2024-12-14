@@ -1,7 +1,7 @@
 import func.help_info
 import func.calendar
 import account.user
-import func.search
+import subject.search
 import account.check
 import account.login
 import os
@@ -13,7 +13,7 @@ def call_other(verb, args):
     elif verb == "user":
         account.user.user(args)
     elif verb == "search":
-        func.search.search(args)
+        subject.search.search(args)
     elif verb == "check":
         account.check.check_access_token(args)
     elif verb == "login":

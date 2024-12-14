@@ -10,7 +10,8 @@ def get_api(relative_url):
     global headers
     # refresh access_token
     if account.login.access_token is None:
-        del headers['Authorization']
+        if 'Authorization' in headers:
+            del headers['Authorization']
     else:
         headers['Authorization'] = f'Bearer {account.login.access_token}'
     # get api
@@ -20,7 +21,10 @@ def get_api(relative_url):
     except requests.exceptions.RequestException as e:
         return None, str(e)  # Request Error
 
-
+def already_login():
+    if account.login.access_token is None:
+        return False
+    return True
 
 def check_access_token(access_token):
     url = 'https://bgm.tv/oauth/token_status'
