@@ -5,7 +5,7 @@ console = Console()
 def main():
     line = ''
     
-    print('Welcome to Ban-Terminal!\nType "help" for help.')
+    print('Welcome to Bangumi-CLI!\nType "help" for help.')
     while True:
         console.print('> ', style='green', end='')
         line = input()

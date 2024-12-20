@@ -3,7 +3,7 @@ import json
 import account.login
 BASE_URL = "https://api.bgm.tv"
 headers = {
-    'User-Agent': 'iamzhz/ban-terminal (https://github.com/iamzhz/ban-terminal)',
+    'User-Agent': 'iamzhz/bangumi-cli (https://github.com/iamzhz/bangumi-cli)',
     #'Authorization': f'Bearer {account.login.access_token}'
 }
 def get_api(relative_url):
@@ -30,7 +30,7 @@ def check_access_token(access_token):
     url = 'https://bgm.tv/oauth/token_status'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'iamzhz/ban-terminal (https://github.com/iamzhz/ban-terminal)'
+        'User-Agent': 'iamzhz/bangumi-cli (https://github.com/iamzhz/bangumi-cli)'
     }
     data = {
         "access_token": access_token
