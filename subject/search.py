@@ -1,5 +1,6 @@
 import get_api
 from subject.get import get_subject
+from the_path import the_path
 from rich.console import Console
 from rich.prompt import Prompt
 console = Console()
@@ -36,3 +37,4 @@ def search(args):
     console.print(f'[bold green]Name[/bold green]: {subject["name"]}')
     console.print(f'[bold green]Chinese Name[/bold green]: {subject["name_cn"]}')
     console.print(f'[bold green]Summary[/bold green]: {subject["summary"]}')
+    the_path.set_path_des([['subject', subject['name'], subject['id'], subject]])
