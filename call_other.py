@@ -4,6 +4,7 @@ import account.user
 import subject.search
 import account.check
 import account.login
+from the_path import the_path
 import os
 
 
@@ -20,6 +21,8 @@ def call_other(verb, args):
         account.check.check_access_token(args)
     elif verb == "login":
         account.login.login()
+    elif verb == "back":
+        the_path.back_path_des()
     elif verb == "exit" or verb == "q":
         exit()
     elif verb == "clear":

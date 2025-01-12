@@ -1,4 +1,5 @@
 path_cur = '/'
+des_stack = []
 path_des = {}
 """
 a 'path_des' is a dict of two strings, an integer and a dict.
@@ -19,6 +20,16 @@ path_des = {
 def set_path_des(des):
     global path_des
     path_des = des
+    des_stack.append(des)
+
+
+def back_path_des():
+    global path_des, des_stack
+    if len(des_stack) > 1:
+        des_stack.pop()
+        path_des = des_stack[-1]
+    else:
+        path_des = {}
 
 
 def des_to_path(des=path_des):
