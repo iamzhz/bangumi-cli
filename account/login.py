@@ -3,6 +3,8 @@ from rich.prompt import Prompt
 import account.check
 console = Console()
 access_token = None
+
+
 def login():
     global access_token
     not_first_login = access_token is not None
@@ -11,7 +13,7 @@ def login():
     console.print("You can get your access token at [link=https://next.bgm.tv/demo/access-token]https://next.bgm.tv/demo/access-token[/link] .")
     access_token = input("Please enter your access token: ")
     # check access token
-    if account.check.check_access_token([access_token]) == True:
+    if account.check.check_access_token([access_token]) is True:
         console.print("Login successful!")
         # TODO: save access token to file
     else:

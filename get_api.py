@@ -4,8 +4,10 @@ import account.login
 BASE_URL = "https://api.bgm.tv"
 headers = {
     'User-Agent': 'iamzhz/bangumi-cli (https://github.com/iamzhz/bangumi-cli)',
-    #'Authorization': f'Bearer {account.login.access_token}'
+    # 'Authorization': f'Bearer {account.login.access_token}'
 }
+
+
 def get_api(relative_url):
     global headers
     # refresh access_token
@@ -21,10 +23,12 @@ def get_api(relative_url):
     except requests.exceptions.RequestException as e:
         return None, str(e)  # Request Error
 
+
 def already_login():
     if account.login.access_token is None:
         return False
     return True
+
 
 def check_access_token(access_token):
     url = 'https://bgm.tv/oauth/token_status'

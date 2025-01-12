@@ -2,12 +2,16 @@ import get_api
 from rich.console import Console
 from rich.table import Table
 from datetime import datetime
+
+
 def get_calendar():
     return get_api.get_api("/calendar")
+
+
 def calendar(args):
     # deal with args
     if len(args) == 0:
-        days = [datetime.now().weekday() + 1 ,]
+        days = [datetime.now().weekday() + 1,]
     elif args[0] == "all":
         days = [1, 2, 3, 4, 5, 6, 7]
     else:

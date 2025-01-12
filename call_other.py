@@ -5,6 +5,8 @@ import subject.search
 import account.check
 import account.login
 import os
+
+
 def call_other(verb, args):
     if verb == "help":
         func.help_info.help_info()
@@ -22,7 +24,7 @@ def call_other(verb, args):
         exit()
     elif verb == "clear":
         os.system('cls' if os.name == 'nt' else 'clear')
-    elif verb == None:
+    elif verb is None:
         pass
     else:
         print("Invalid command")

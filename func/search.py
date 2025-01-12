@@ -2,8 +2,11 @@ import get_api
 from rich.console import Console
 from rich.prompt import Prompt
 console = Console()
-def get_search_subjects(keyword, type = 2, responseGroup = "small"):
+
+
+def get_search_subjects(keyword, type=2, responseGroup="small"):
     return get_api.get_api(f"/search/subject/{keyword}?type={type}&responseGroup={responseGroup}")
+
 
 def search(args):
     # check args length

@@ -5,6 +5,8 @@ console = Console()
 success: return True
 failure: return False
 """
+
+
 def check_access_token(args):
     # check args
     if len(args) < 1:

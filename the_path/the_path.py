@@ -9,16 +9,19 @@ the 'more' is a dict of the additional information of the thing.
 e.g.
 path_des = {
 'type': 'subject',
-'name': 'the_name', 
-'id': 320224, 
+'name': 'the_name',
+'id': 320224,
 'more': {A dict}
 }
 """
+
+
 def set_path_des(des):
     global path_des
     path_des = des
-    
-def des_to_path(des = path_des):
+
+
+def des_to_path(des=path_des):
     global path_cur
     path_temp = ''
     if des == {}:

@@ -4,8 +4,11 @@ from the_path import the_path
 from rich.console import Console
 from rich.prompt import Prompt
 console = Console()
-def get_search_subjects(keyword, type = 2, responseGroup = 'small'):
+
+
+def get_search_subjects(keyword, type=2, responseGroup='small'):
     return get_api.get_api(f'/search/subject/{keyword}?type={type}&responseGroup={responseGroup}')
+
 
 def search(args):
     # check args length
@@ -32,7 +35,7 @@ def search(args):
         console.print('[bold red]Error[/bold red]: Subject not found.')
     if status_code == 401:
         console.print('[bold red]Error[/bold red]: Unauthorized.')
-        return 
+        return
     # status_code == 200
     console.print(f'[bold green]Name[/bold green]: {subject["name"]}')
     console.print(f'[bold green]Chinese Name[/bold green]: {subject["name_cn"]}')
