@@ -37,4 +37,4 @@ def search(args):
     console.print(f'[bold green]Name[/bold green]: {subject["name"]}')
     console.print(f'[bold green]Chinese Name[/bold green]: {subject["name_cn"]}')
     console.print(f'[bold green]Summary[/bold green]: {subject["summary"]}')
-    the_path.set_path_des([['subject', subject['name'], subject['id'], subject]])
+    the_path.set_path_des({'type': 'subject', 'name': subject['name'], 'id': subject['id'], 'name': subject['name']})
