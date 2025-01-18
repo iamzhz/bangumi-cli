@@ -22,7 +22,6 @@ def login():
             # delete info from saved file
             access_token = None
             data = None
-            
     # output infomation
     if not is_saved and is_use_saved == 'n':
         console.print("In order to login, you must provide your access token.")
@@ -31,7 +30,7 @@ def login():
     # check access token
     if account.check.check_access_token([access_token]) is True:
         console.print("Login successful!")
-        if is_use_saved == 'n': # new enter access token
+        if is_use_saved == 'n':  # new enter access token
             is_save = Prompt.ask("Do you want to save your access token?", choices=['y', 'n'], default='y')
             if is_save == 'y':
                 save_account_data(access_token)
