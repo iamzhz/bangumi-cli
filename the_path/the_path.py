@@ -23,7 +23,7 @@ def set_path_des(des):
     des_stack.append(des)
 
 
-def back_path_des():
+def back_path_des(args):
     global path_des, des_stack
     if len(des_stack) > 1:
         des_stack.pop()

@@ -7,7 +7,7 @@ console = Console()
 access_token = None
 
 
-def login():
+def login(args):
     global access_token
     not_first_login = access_token is not None
     is_use_saved = 'n'

@@ -9,24 +9,20 @@ import os
 
 
 def call_other(verb, args):
-    if verb == "help":
-        func.help_info.help_info()
-    elif verb == "cal":
-        func.calendar.calendar(args)
-    elif verb == "user":
-        account.user.user(args)
-    elif verb == "search":
-        subject.search.search(args)
-    elif verb == "check":
-        account.check.check_access_token(args)
-    elif verb == "login":
-        account.login.login()
-    elif verb == "back":
-        the_path.back_path_des()
-    elif verb == "exit" or verb == "q":
-        exit()
-    elif verb == "clear":
-        os.system('cls' if os.name == 'nt' else 'clear')
+    func_dict = {
+        "help": func.help_info.help_info,
+        "cal": func.calendar.calendar,
+        "user": account.user.user,
+        "search": subject.search.search,
+        "check": account.check.check_access_token,
+        "login": account.login.login,
+        "back": the_path.back_path_des,
+        "exit": lambda args: exit(),
+        "q": lambda args: exit(),
+        "clear": lambda args: os.system('cls' if os.name == 'nt' else 'clear')
+    }
+    if verb in func_dict:
+        func_dict[verb](args)
     elif verb is None:
         pass
     else:

@@ -1,4 +1,4 @@
-def help_info():
+def help_info(args):
     print('''Welcome to Bangumi-CLI help information!
           1. Type "help" to see this help information.
           2. Type "exit" to exit the program.
