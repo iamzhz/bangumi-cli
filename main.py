@@ -1,11 +1,18 @@
+import sys
 from the_path import the_path
 from parse_line import *
 from call_other import *
+import debug.debug
 from rich.console import Console
 console = Console()
 
 
 def main():
+    # pre_run part
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '--debug':
+            debug.debug.pre_run()
+    # general part
     line = ''
 
     print('Welcome to Bangumi-CLI!\nType "help" for help.')
