@@ -1,4 +1,5 @@
 from the_path import the_path
+import func.show_picture
 from rich.panel import Panel
 from rich.columns import Columns
 from rich.console import Console
@@ -16,6 +17,7 @@ def show(args):
         "info": show_info,
         "collection": show_collection,
         "id": show_id,
+        "cover": show_cover,
     }
     if args[0] in func_dict:
         func_dict[args[0]]()
@@ -59,3 +61,8 @@ def show_collection():
 
 def show_id():
     console.print(f"ID: {the_path.path_des['id']}")
+
+
+def show_cover():
+    image_url = the_path.path_des['more']['images']['small']
+    func.show_picture.display_web_image(image_url)
