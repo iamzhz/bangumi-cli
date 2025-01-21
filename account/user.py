@@ -1,5 +1,6 @@
 import get_api
 import func.show_picture
+from rich.table import Table
 from rich.console import Console
 console = Console()
 
@@ -13,10 +14,14 @@ def get_user_info_me():
 
 
 def output_user_info_by_dict(info):
-    console.print(f"[u]Username[/u]: {info['username']}")
-    console.print(f"[u]Nickname[/u]: {info['nickname']}")
-    console.print(f"[u]Id[/u]: {info['id']}")
-    console.print(f"[u]Sign[/u]: {info['sign']}")
+    table = Table(show_header=True, header_style="bold magenta")
+    table.add_column("Key", style="dim", width=12)
+    table.add_column("Value")
+    table.add_row("Username", info['username'])
+    table.add_row("Nickname", info['nickname'])
+    table.add_row("Id", str(info['id']))
+    table.add_row("Sign", info['sign'])
+    console.print(table)
 
 
 def user_info(args):
