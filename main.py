@@ -1,7 +1,9 @@
 import sys
+import signal
 from the_path import the_path
 from parse_line import *
 from call_other import *
+import func.exit
 import debug.debug
 from rich.console import Console
 console = Console()
@@ -13,6 +15,7 @@ def main():
         if sys.argv[1] == '--debug':
             debug.debug.pre_run()
     # general part
+    signal.signal(signal.SIGINT, func.exit.signal_handler)
     line = ''
 
     print('Welcome to Bangumi-CLI!\nType "help" for help.')

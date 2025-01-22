@@ -1,3 +1,4 @@
+import func.exit
 import func.help_info
 import func.calendar
 import account.user
@@ -18,8 +19,8 @@ def call_other(verb, args):
         "check": account.check.check_access_token,
         "login": account.login.login,
         "back": the_path.back_path_des,
-        "exit": lambda args: exit(),
-        "q": lambda args: exit(),
+        "exit": lambda args: func.exit.exit_program(),
+        "q": lambda args: func.exit.exit_program(),
         "clear": lambda args: os.system('cls' if os.name == 'nt' else 'clear')
     }
     subject_command_dict = {  # subject commands
