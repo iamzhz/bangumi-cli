@@ -6,6 +6,7 @@ import subject.search
 import subject.show
 import account.check
 import account.login
+import subject.persons
 from the_path import the_path
 import os
 
@@ -25,6 +26,7 @@ def call_other(verb, args):
     }
     subject_command_dict = {  # subject commands
         "show": subject.show.show,
+        "persons": subject.persons.get_subject_person,
     }
 
     if 'type' in the_path.path_des:

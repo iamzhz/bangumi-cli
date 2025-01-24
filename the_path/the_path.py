@@ -7,6 +7,7 @@ the 'type' is a string of the type of the thing (subject, person, character, etc
 the 'name' is a string of the name of the thing.
 the 'id' is an integer of the id of the thing.
 the 'more' is a dict of the additional information of the thing.
+other... (can be used by other functions when they need)
 e.g.
 path_des = {
 'type': 'subject',
