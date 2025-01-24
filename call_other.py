@@ -1,6 +1,6 @@
 import func.exit
 import func.help_info
-import func.calendar
+import cal.cal
 import account.user
 import subject.search
 import subject.show
@@ -13,7 +13,7 @@ import os
 def call_other(verb, args):
     command_dict = {  # general commands
         "help": func.help_info.help_info,
-        "cal": func.calendar.calendar,
+        "cal": cal.cal.calendar,
         "user": account.user.user,
         "search": subject.search.search,
         "check": account.check.check_access_token,
