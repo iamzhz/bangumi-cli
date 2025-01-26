@@ -17,7 +17,7 @@ def call_other(verb, args):
         "cal": cal.cal.calendar,
         "user": account.user.user,
         "search": subject.search.search,
-        "check": account.check.check_access_token,
+        "check": account.check.show_check_access_token,
         "login": account.login.login,
         "back": the_path.back_path_des,
         "exit": lambda args: func.exit.exit_program(),
