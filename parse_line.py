@@ -6,8 +6,20 @@
 """
 
 
+def line_to_args_py(line):
+    return line.split()
+
+
+try:
+    import c_ext
+    line_to_args = c_ext.line_to_args
+except ImportError:
+    print("Warning: c_ext not found, using python implementation")
+    line_to_args = line_to_args_py
+
+
 def parse_line(line):
-    words = line.split()
+    words = line_to_args(line)
     if len(words) == 0:
         return None, None
     verb = words[0]
