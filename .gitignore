@@ -2,4 +2,6 @@ data/
 **/__pycache__/
 build/
 **/*.pyd
+**/*.so
+**/*.dll
 todo.md

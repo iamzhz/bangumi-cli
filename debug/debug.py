@@ -13,7 +13,9 @@ def pre_run():
     ]
     """
     pre_run_list = [
-
+        "login",
+        "search linkclick",
+        "persons"
     ]
     for command in pre_run_list:
         print(f"--------- Run: `{command}` ----------")
