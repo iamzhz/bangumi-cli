@@ -31,6 +31,14 @@ def help_info(args):
     help_text.append('    - id: Display the subject ID.\n')
     help_text.append('    - cover: Display the subject cover.\n\n')
 
+    # Person-related Commands
+    help_text.append('Person-related Commands:\n', style='bold')
+    help_text.append('  - show: Display relevant information about the person, supporting the following sub-commands:\n')
+    help_text.append('    - summary: Display the person\'s summary.\n')
+    help_text.append('    - info: Display detailed information about the person.\n')
+    help_text.append('    - id: Display the subject ID.\n')
+    help_text.append('    - cover / photo: Display the person\'s photo.\n\n')
+
     # Other Commands
     help_text.append('Other Commands:\n', style='bold')
     help_text.append('  - cal: View the calendar.\n')

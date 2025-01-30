@@ -7,6 +7,7 @@ import subject.show
 import account.check
 import account.login
 import subject.persons
+import person.show
 from the_path import the_path
 import os
 
@@ -22,17 +23,23 @@ def call_other(verb, args):
         "back": the_path.back_path_des,
         "exit": lambda args: func.exit.exit_program(),
         "q": lambda args: func.exit.exit_program(),
-        "clear": lambda args: os.system('cls' if os.name == 'nt' else 'clear')
+        "clear": lambda args: os.system('cls' if os.name == 'nt' else 'clear'),
     }
     subject_command_dict = {  # subject commands
         "show": subject.show.show,
         "persons": subject.persons.get_subject_person,
     }
+    person_command_dict = {
+        "show": person.show.show,
+    }
 
-    if 'type' in the_path.path_des:
-        if the_path.path_des['type'] == 'subject' and verb in subject_command_dict:
-            subject_command_dict[verb](args)
-            return
+    the_path_type = the_path.path_des.get('type')
+    if the_path_type == 'subject' and verb in subject_command_dict:
+        subject_command_dict[verb](args)
+        return
+    if the_path_type == 'person' and verb in person_command_dict:
+        person_command_dict[verb](args)
+        return
     if verb in command_dict:
         command_dict[verb](args)
     elif verb is None:
