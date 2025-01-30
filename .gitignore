@@ -4,4 +4,5 @@ build/
 **/*.pyd
 **/*.so
 **/*.dll
+.vscode/
 todo.md

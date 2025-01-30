@@ -24,7 +24,7 @@ def get_subject_person(args):
             return
         # elif status == 200:
         the_path.path_des['persons'] = persons
-    # show the personis
+    # show the persons
     persons = the_path.path_des['persons']
     persons_table = Table(title=f"{the_path.path_des['name']} Persons")
     persons_table.add_column("Number", style="white")

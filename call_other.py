@@ -8,6 +8,7 @@ import account.check
 import account.login
 import subject.persons
 import person.show
+import person.subjects
 from the_path import the_path
 import os
 
@@ -31,6 +32,7 @@ def call_other(verb, args):
     }
     person_command_dict = {
         "show": person.show.show,
+        "subjects": person.subjects.get_subject_person,
     }
 
     the_path_type = the_path.path_des.get('type')

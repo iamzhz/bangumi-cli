@@ -1,5 +1,5 @@
 import get_api
-from subject.get import get_subject
+import subject.subject
 from the_path import the_path
 from rich.console import Console
 from rich.prompt import Prompt
@@ -29,15 +29,5 @@ def search(args):
     choices_list = [str(i) for i in range(len(result['list']))]
     number = Prompt.ask('Please enter the number: ', choices=choices_list, default='0')
     console.print(f'You choose {result["list"][int(number)]["name"]}')
-    # show information about the subject
-    status_code, subject = get_subject(result['list'][int(number)]['id'])
-    if status_code == 404:
-        console.print('[bold red]Error[/bold red]: Subject not found.')
-    if status_code == 401:
-        console.print('[bold red]Error[/bold red]: Unauthorized.')
-        return
-    # status_code == 200
-    console.print(f'[bold green]Name[/bold green]: {subject["name"]}')
-    console.print(f'[bold green]Chinese Name[/bold green]: {subject["name_cn"]}')
-    console.print(f'[bold green]Summary[/bold green]: {subject["summary"]}')
-    the_path.set_path_des({'type': 'subject', 'name': subject['name'], 'id': subject['id'], 'more': subject})
+    # switch to subject page
+    subject.subject.switch_to_subject_by_subject_id(result["list"][int(number)]['id'])

@@ -11,9 +11,9 @@ def switch_to_person_by_person_id(person_id):
         print("[ERROR] Not Found")
         return
     # status_code == 200
-    path_des = {}
-    path_des['type'] = "person"
-    path_des['name'] = content['name']
-    path_des['id'] = person_id
-    path_des['more'] = content
-    the_path.set_path_des(path_des)
+    the_path.set_path_des({
+        'type': "person",
+        'name': content['name'],
+        'id': person_id,
+        'more': content,
+    })
