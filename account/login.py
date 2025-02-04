@@ -7,7 +7,7 @@ console = Console()
 access_token = None
 
 
-def login(args):
+def login(args: list) -> None:
     global access_token
     not_first_login = access_token is not None
     is_use_saved = 'n'
@@ -30,7 +30,7 @@ def login(args):
     check_and_save_access_token(access_token, is_get_from_file)
 
 
-def check_and_save_access_token(access_token, is_get_from_file):
+def check_and_save_access_token(access_token: str, is_get_from_file: bool) -> None:
     # check access token
     is_check_success, _ = account.check.check_access_token(access_token)
     if is_check_success:
@@ -47,7 +47,7 @@ def check_and_save_access_token(access_token, is_get_from_file):
                 os.remove('data/account.json')
 
 
-def write_dict_to_json(data, file_path):
+def write_dict_to_json(data: dict, file_path: str) -> None:
     # make sure the directory exists
     directory = os.path.dirname(file_path)
     if directory:
@@ -57,7 +57,7 @@ def write_dict_to_json(data, file_path):
         json.dump(data, f, indent=4)
 
 
-def save_account_data(access_token=access_token):
+def save_account_data(access_token: str = access_token) -> None:
     data = {'access_token': access_token}
     data['info'] = account.user.get_user_info_me()[1]
     write_dict_to_json(data, 'data/account.json')

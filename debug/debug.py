@@ -2,7 +2,7 @@ from parse_line import parse_line
 from call_other import call_other
 
 
-def pre_run():
+def pre_run() -> None:
     """
     pre_run_list is a list of strings,
     each string is a command like "search xxx", "check xxxxxxx", "login" etc.

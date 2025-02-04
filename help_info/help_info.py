@@ -3,7 +3,7 @@ from rich.panel import Panel
 from rich.text import Text
 
 
-def help_info(args):
+def help_info(args: list) -> None:
     console = Console()
 
     help_text = Text('Welcome to Bangumi-CLI help information!\n\n')

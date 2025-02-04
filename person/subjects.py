@@ -1,6 +1,7 @@
 import person.get
 from the_path import the_path
 import subject.subject
+from say_error import say_error
 from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt
@@ -16,19 +17,19 @@ SUBJECT_TYPE = {
 }
 
 
-def get_subject_person(args):
+def get_subject_person(args: list) -> None:
     # Check if in person page
     if the_path.path_des.get('type') != 'person':
-        print("Not in person page")
+        say_error.say("Not in person page")
         return
     # the_path.path_des['subjects'] is not exisiting, you must get it
     if 'subjects' not in the_path.path_des:
         status, subjects = person.get.get_person_related_subjects(the_path.path_des['id'])
         if status == 400:
-            print("Validation Error")
+            say_error.say("Validation Error")
             return
         elif status == 404:
-            print("Not Found")
+            say_error.say("Not Found")
             return
         # elif status == 200:
         the_path.path_des['subjects'] = subjects

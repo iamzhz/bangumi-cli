@@ -9,7 +9,7 @@ from rich.console import Console
 console = Console()
 
 
-def main():
+def main() -> None:
     # pre_run part
     if len(sys.argv) > 1:
         if sys.argv[1] == '--debug':

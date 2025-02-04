@@ -1,19 +1,20 @@
 import get_api
+from say_error import say_error
 import func.show_picture
 from rich.table import Table
 from rich.console import Console
 console = Console()
 
 
-def get_user_info_by_name(username):
+def get_user_info_by_name(username: str) -> (int, dict):
     return get_api.get_api(f"/v0/users/{username}")
 
 
-def get_user_info_me():
+def get_user_info_me() -> (int, dict):
     return get_api.get_api("/v0/me")
 
 
-def output_user_info_by_dict(info):
+def output_user_info_by_dict(info: dict) -> None:
     table = Table(show_header=True, header_style="bold magenta")
     table.add_column("Key", style="dim", width=12)
     table.add_column("Value")
@@ -24,40 +25,40 @@ def output_user_info_by_dict(info):
     console.print(table)
 
 
-def user_info(args):
+def user_info(args: list) -> None:
     if len(args) == 0:
-        print("Please enter the username.")
+        say_error.say("Please enter the username.")
         return
     status, info = get_user_info_by_name(args[0])
     if status == 400:
-        print('Username too long.')
+        say_error.say("Username too long.")
         return
     if status == 404:
-        print('User not found.')
+        say_error.say("User not found.")
         return
     # status == 200
     output_user_info_by_dict(info)
 
 
-def user_avatar(args):
+def user_avatar(args: list) -> None:
     if len(args) == 0:
-        print("Please enter the username.")
+        say_error.say("Please enter the username.")
         return
     status, info = get_user_info_by_name(args[0])
     if status == 400:
-        print('Username too long.')
+        say_error.say("Username too long.")
         return
     if status == 404:
-        print('User not found.')
+        say_error.say("User not found.")
         return
     # status == 200
     func.show_picture.display_web_image(info['avatar']['small'])
 
 
-def user_info_me():
+def user_info_me() -> bool:
     status, info = get_user_info_me()
     if status == 401:
-        print('Unauthorized.')
+        say_error.say("Unauthorized.")
         return False
     if status == 200:
         output_user_info_by_dict(info)
@@ -65,9 +66,9 @@ def user_info_me():
     return False
 
 
-def user(args):
+def user(args: list) -> None:
     if len(args) == 0:
-        print("Please enter the args.")
+        say_error.say("Please enter the args.")
         return
     if args[0] == 'info':
         user_info(args[1:])
@@ -77,4 +78,4 @@ def user(args):
         user_avatar(args[1:])
         pass
     else:
-        print("Invalid args.")
+        say_error.say("Invalid args.")

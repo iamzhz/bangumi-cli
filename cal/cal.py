@@ -4,11 +4,11 @@ from rich.table import Table
 from datetime import datetime
 
 
-def get_calendar():
+def get_calendar() -> (int, dict):
     return get_api.get_api("/calendar")
 
 
-def calendar(args):
+def calendar(args: list) -> None:
     # deal with args
     if len(args) == 0:
         days = [datetime.now().weekday() + 1,]

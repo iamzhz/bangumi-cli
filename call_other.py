@@ -10,10 +10,11 @@ import subject.persons
 import person.show
 import person.subjects
 from the_path import the_path
+from say_error import say_error
 import os
 
 
-def call_other(verb, args):
+def call_other(verb: str, args: list) -> None:
     command_dict = {  # general commands
         "help": help_info.help_info.help_info,
         "cal": cal.cal.calendar,
@@ -47,4 +48,4 @@ def call_other(verb, args):
     elif verb is None:
         pass
     else:
-        print("Invalid command")
+        say_error.say("Invalid command")

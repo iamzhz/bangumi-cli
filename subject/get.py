@@ -1,7 +1,7 @@
 import get_api
 
 
-def get_subject(subject_id):
+def get_subject(subject_id: any) -> (int, dict):
     # check login
     if not get_api.already_login():
         return 401, 'Unauthorized'

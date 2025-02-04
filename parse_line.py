@@ -5,20 +5,25 @@
     eg. 'download the_pictuce'
 """
 
+from say_error import say_error
 
-def line_to_args_py(line):
+
+def line_to_args_py(line: str) -> list:
     return line.split()
 
 
 try:
     import c_ext
-    line_to_args = c_ext.line_to_args
+    if hasattr(c_ext, 'line_to_args'):
+        line_to_args = c_ext.line_to_args
+    else:
+        raise ImportError("c_ext does not have line_to_args")
 except ImportError:
-    print("Warning: c_ext not found, using python implementation")
+    say_error.say("c_ext not found or line_to_args missing, using python implementation")
     line_to_args = line_to_args_py
 
 
-def parse_line(line):
+def parse_line(line: str) -> (str, list):
     words = line_to_args(line)
     if len(words) == 0:
         return None, None

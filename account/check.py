@@ -1,9 +1,10 @@
 import get_api
+from say_error import say_error
 from rich.console import Console
 console = Console()
 
 
-def check_access_token(access_token):
+def check_access_token(access_token: str) -> (bool, dict):
     """
     success: return True, content
     failure: return False, content
@@ -13,10 +14,10 @@ def check_access_token(access_token):
     return status_code == 200, content
 
 
-def show_check_access_token(args):
+def show_check_access_token(args: list) -> bool:
     # check args
     if len(args) < 1:
-        console.print('[bold red]Error[/bold red]: Please provide an access token.')
+        say_error.say("Please provide an access token.")
         return
     # check access token
     is_success, content = check_access_token(args[0])

@@ -1,3 +1,4 @@
+from say_error import say_error
 import requests
 from PIL import Image
 from io import BytesIO
@@ -5,7 +6,7 @@ from rich.console import Console
 from rich.style import Style
 
 
-def display_web_image(url, char_aspect_ratio=2.0, scale_factor=0.8):
+def display_web_image(url: str, char_aspect_ratio: float = 2.0, scale_factor: float = 0.8) -> None:
     console = Console()
     try:
         # Get image data from URL
@@ -56,6 +57,6 @@ def display_web_image(url, char_aspect_ratio=2.0, scale_factor=0.8):
             console.print()  # New line
 
     except requests.RequestException as e:
-        console.print(f"Error fetching image: {e}", style="bold red")
+        say_error.say(f"Error fetching image: {e}")
     except Exception as e:
-        console.print(f"Error displaying image: {e}", style="bold red")
+        say_error.say(f"Error displaying image: {e}")

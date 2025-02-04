@@ -8,7 +8,7 @@ headers = {
 }
 
 
-def get_api(relative_url):
+def get_api(relative_url: str) -> (int, dict):
     global headers
     # refresh access_token
     if account.login.access_token is None:
@@ -24,13 +24,13 @@ def get_api(relative_url):
         return None, str(e)  # Request Error
 
 
-def already_login():
+def already_login() -> bool:
     if account.login.access_token is None:
         return False
     return True
 
 
-def check_access_token(access_token):
+def check_access_token(access_token: str) -> (int, dict):
     url = 'https://bgm.tv/oauth/token_status'
     headers = {
         'Content-Type': 'application/x-www-form-urlencoded',

@@ -18,13 +18,13 @@ path_des = {
 """
 
 
-def set_path_des(des):
+def set_path_des(des: dict) -> None:
     global path_des
     path_des = des
     des_stack.append(des)
 
 
-def back_path_des(args):
+def back_path_des(args: list) -> None:
     global path_des, des_stack
     if len(des_stack) > 1:
         des_stack.pop()
@@ -33,7 +33,7 @@ def back_path_des(args):
         path_des = {}
 
 
-def des_to_path(des=path_des):
+def des_to_path(des: dict = path_des) -> str:
     global path_cur
     path_temp = ''
     if des == {}:

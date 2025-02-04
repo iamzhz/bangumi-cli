@@ -1,5 +1,6 @@
 from the_path import the_path
 import person.person
+from say_error import say_error
 from rich.console import Console
 from rich.table import Table
 from rich.prompt import Prompt
@@ -8,19 +9,19 @@ import get_api
 console = Console()
 
 
-def get_subject_person(args):
+def get_subject_person(args: list) -> None:
     # Check if in subject page
     if the_path.path_des.get('type') != 'subject':
-        print("Not in subject page")
+        say_error.say("Not in subject page")
         return
     # the_path.path_des['persons'] is not exisiting, you must get it
     if 'persons' not in the_path.path_des:
         status, persons = get_api.get_api(f"/v0/subjects/{the_path.path_des.get('id')}/persons")
         if status == 400:
-            print("Validation Error")
+            say_error.say("Validation Error")
             return
         elif status == 404:
-            print("Not Found")
+            say_error.say("Not Found")
             return
         # elif status == 200:
         the_path.path_des['persons'] = persons

@@ -1,5 +1,6 @@
 from the_path import the_path
 import func.show_picture
+from say_error import say_error
 from rich.panel import Panel
 from rich.columns import Columns
 from rich.console import Console
@@ -7,9 +8,9 @@ from rich.table import Table
 console = Console()
 
 
-def show(args):
+def show(args: list) -> None:
     if len(args) < 1:
-        console.print("[red]TIP: [/red] please input something to show !")
+        say_error.say("please input something to show !")
         return
     func_dict = {
         "summary": show_summary,
@@ -22,21 +23,21 @@ def show(args):
     if args[0] in func_dict:
         func_dict[args[0]]()
     else:
-        console.print(f"[red]TIP: [/red] {args[0]} is not a valid option !")
+        say_error.say(f"{args[0]} is not a valid option !")
 
 
-def show_summary():
+def show_summary() -> None:
     summary = the_path.path_des['more']['summary']
     console.print(Panel(summary, title="Summary"))
 
 
-def show_tags():
+def show_tags() -> None:
     original_tags = the_path.path_des['more']['tags']
     tags = [f"{i.get('name')}: [green]{i.get('count')}[/green]" for i in original_tags]
     console.print(Columns(tags, equal=True))
 
 
-def show_info():
+def show_info() -> None:
     original_infobox = the_path.path_des['more']['infobox']  # string
     infobox = Table(title=the_path.path_des['name'])  # rich.table.Table
     infobox.add_column("Key", justify="right", style="cyan", no_wrap=True)
@@ -49,7 +50,7 @@ def show_info():
     console.print(infobox)
 
 
-def show_collection():
+def show_collection() -> None:
     original_collection = the_path.path_des['more']['collection']  # dict
     collection = Table(title=f"{the_path.path_des['name']} Collection")  # rich.table.Table
     collection.add_column("Type", justify="right", style="cyan", no_wrap=True)
@@ -59,10 +60,10 @@ def show_collection():
     console.print(collection)
 
 
-def show_id():
+def show_id() -> None:
     console.print(f"ID: {the_path.path_des['id']}")
 
 
-def show_cover():
+def show_cover() -> None:
     image_url = the_path.path_des['more']['images']['small']
     func.show_picture.display_web_image(image_url)
